@@ -34,7 +34,33 @@ private NamespacedKey rollKey;
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("Breach-MC Online.");
     }
+    // --- PREVENT DROPPING ---
+    @EventHandler
+    public void onDrop(org.bukkit.event.player.PlayerDropItemEvent event) {
+        if (isAnyBreachCore(event.getItemDrop().getItemStack())) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage("§cThis artifact is bound to your soul!");
+    }
+}
 
+// --- KEEP ON DEATH ---
+    @EventHandler
+    public void onDeath(org.bukkit.event.entity.PlayerDeathEvent event) {
+    // We look through the list of items the player is about to drop
+        java.util.Iterator<ItemStack> iterator = event.getDrops().iterator();
+    
+        while (iterator.hasNext()) {
+            ItemStack item = iterator.next();
+        
+            if (isAnyBreachCore(item)) {
+                // Remove it from the ground drops
+                iterator.remove();
+            
+            // Add it to the list of items the player keeps when they respawn
+                event.getItemsToKeep().add(item);
+            }
+        }
+    }
     @EventHandler
     public void onFirstJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -153,7 +179,7 @@ if (cmd.getName().equalsIgnoreCase("breach")) {
         }
         return true;
     }
-
+/git p
     return false;
 }
 
