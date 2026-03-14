@@ -1,0 +1,8 @@
+name: Breach-MC
+version: 1.0
+main: me.breach.MyPlugin
+api-version: 1.21
+commands:
+  getcore:
+    description: Gives a Breach Core variation.
+    usage: /getcore [material_name]
