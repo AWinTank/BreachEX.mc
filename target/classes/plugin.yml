@@ -1,8 +1,13 @@
 name: Breach-MC
 version: 1.0
-main: me.breach.MyPlugin
+main: me.breach.BreachMC
 api-version: 1.21
 commands:
   getcore:
-    description: Gives a Breach Core variation.
-    usage: /getcore [material_name]
+    description: Get a specific Breach Core.
+  breach:
+    description: Open the main Breach-MC interface.
+  resetrerolls:
+    description: Resets your core reroll charges to 3.
+
+  

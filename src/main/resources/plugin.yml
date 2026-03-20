@@ -1,6 +1,6 @@
 name: Breach-MC
 version: 1.0
-main: me.breach.MyPlugin
+main: me.breach.BreachMC
 api-version: 1.21
 commands:
   getcore:
